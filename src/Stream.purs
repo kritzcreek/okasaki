@@ -16,14 +16,6 @@ import Data.Monoid (class Monoid)
 data StreamCell a = Nil | Cons a (Stream a)
 newtype Stream a = Stream (Lazy (StreamCell a))
 
-test :: Stream Int
-test =
-  sdefer \_ ->
-           Cons 1 (sdefer \_ ->
-                    Cons 2 (sdefer \_ ->
-                             Cons 3 (sdefer \_ ->
-                                      Nil)))
-
 appendStream :: forall a. Stream a -> Stream a -> Stream a
 appendStream s t = sdefer \_ ->
   case sforce s of
@@ -67,8 +59,19 @@ instance semigroupStream :: Semigroup (Stream a) where
 instance monoidStream :: Monoid (Stream a) where
   mempty = sdefer \_ -> Nil
 
+
+-- private functions
+
 sdefer :: forall a. (Unit -> StreamCell a) -> Stream a
 sdefer = Stream <<< defer
 
 sforce :: forall a. Stream a -> StreamCell a
 sforce (Stream s) = force s
+
+test :: Stream Int
+test =
+  sdefer \_ ->
+           Cons 1 (sdefer \_ ->
+                    Cons 2 (sdefer \_ ->
+                             Cons 3 (sdefer \_ ->
+                                      Nil)))
