@@ -8,7 +8,9 @@
   ],
   "dependencies": {
     "purescript-console": "^1.0.0",
-    "purescript-lazy": "^1.0.1"
+    "purescript-lazy": "^1.0.1",
+    "purescript-lists": "^1.0.1",
+    "purescript-maybe": "^1.0.0"
   },
   "devDependencies": {
     "purescript-psci-support": "^1.0.0"
