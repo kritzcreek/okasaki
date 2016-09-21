@@ -6,6 +6,8 @@ module Stream
        , drop
        , reverse
        , prettyStream
+       , sdefer
+       , sforce
        )
        where
 

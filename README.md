@@ -8,7 +8,7 @@ by Chris Okasaki.
 
 - [x] [Stream](src/Stream.purs)
 - [x] [BatchedQueue](src/BatchedQueue.purs)
-- [ ] BankersQueue
+- [x] [BankersQueue] (src/BankersQueue.purs)
 - [ ] PhysicistsQueue
 - [ ] BottomUpMergeSort
 - [ ] RealTimeQueue
